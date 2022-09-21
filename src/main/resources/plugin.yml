@@ -1,0 +1,4 @@
+name: KillStreakCounter
+version: '${project.version}'
+main: me.gameisntover.killstreakcounter.KillStreakCounter
+api-version: 1.17

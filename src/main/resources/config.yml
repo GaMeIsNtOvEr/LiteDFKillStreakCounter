@@ -1,0 +1,23 @@
+killstreak:
+  message:
+    5: "&7%playername% has reached to 5 kill streak!"
+    10: "&7%playername% has reached to 10 kill streak!"
+    15: "&7%playername% has reached to 15 kill streak!"
+    20: "&7%playername% has reached to 20 kill streak!"
+  title:
+    5: "&4RAMPAGE"
+    10: "&4RAMPAGE"
+    15: "&4RAMPAGE"
+    20: "&4RAMPAGE"
+  subtitle:
+    5: "&c%playername% &7is a serial killer!"
+    10: "&c%playername% &7is a monster!"
+    15: "&c%playername% &7 is a legend!"
+    20: "&c%playername% &7 is a truly villain!"
+  sound:
+    5: "ENTITY_WOLF_GROWL:1.0F:1.0F"
+    10: "ENTITY_ENDERMAN_SCREAM:1.0F:1.0F"
+    15: "ENTITY_ENDER_DRAGON_GROWL:1.0F:1.0F"
+    20: "ENTITY_ENDER_DRAGON_DEATH:1.0F:1.0F"
+#SOUNDNAME:VOLUME+F:PITCH+F
+#e.g : ENTITY_WOLF_GROWL:1.0F:1.0F
