@@ -14,6 +14,26 @@ killstreak:
     10: "&c%playername% &7is a monster!"
     15: "&c%playername% &7 is a legend!"
     20: "&c%playername% &7 is a truly villain!"
+  time:
+    5: "20:20:20"
+    10: "20:20:20"
+    15: "20:20:20"
+    20: "20:20:20"
+  killprize:
+    5:
+    - "examplecommand %playername%"
+    - "examplecommand2 args"
+    10:
+    - "examplecommand %playername%"
+    - "examplecommand2 args"
+    15:
+    - "examplecommand %playername%"
+    - "examplecommand2 args"
+    20:
+    - "examplecommand %playername%"
+    - "examplecommand2 args"
+
+#fadeIn:stay:fadeOut
   sound:
     5: "ENTITY_WOLF_GROWL:1.0F:1.0F"
     10: "ENTITY_ENDERMAN_SCREAM:1.0F:1.0F"

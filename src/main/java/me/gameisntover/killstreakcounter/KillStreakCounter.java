@@ -11,6 +11,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -40,10 +41,16 @@ public final class KillStreakCounter extends JavaPlugin implements Listener {
             Optional<String> subtitle = Optional.ofNullable(getConfig().getString("killstreak.subtitle."+ kills));
             Optional<String> message = Optional.ofNullable(getConfig().getString("killstreak.message."+ kills));
             Optional<String> sound = Optional.ofNullable(getConfig().getString("killstreak.sound."+ kills));
+            Optional<String> time = Optional.ofNullable(getConfig().getString("killstreak.time."+kills));
             for (Player p : Bukkit.getOnlinePlayers()){
                 message.ifPresent(s -> p.sendMessage(ChatColor.translateAlternateColorCodes('&', s.replace("%playername%", killer.getName()))));
-                if (subtitle.isPresent() && title.isPresent())
-                    p.sendTitle(ChatColor.translateAlternateColorCodes('&',title.get()),ChatColor.translateAlternateColorCodes('&',subtitle.get()),20,20,20);
+                if (subtitle.isPresent() && title.isPresent() && time.isPresent()){
+                    String[] args = time.get().split(":");
+                    int fadeIn = Integer.parseInt(args[0]);
+                    int stay = Integer.parseInt(args[1]);
+                    int fadeOut = Integer.parseInt(args[2]);
+                    p.sendTitle(ChatColor.translateAlternateColorCodes('&',title.get()),ChatColor.translateAlternateColorCodes('&',subtitle.get().replace("%playername%",killer.getName())),fadeIn,stay,fadeOut);
+                }
                 if (sound.isPresent()) {
                     String[] args = sound.get().split(":");
                     String sn = args[0];
@@ -51,6 +58,14 @@ public final class KillStreakCounter extends JavaPlugin implements Listener {
                     float pitch = Float.parseFloat(args[2]);
                     p.playSound(p.getLocation(), Sound.valueOf(sn),volume,pitch);
 
+                }
+            }
+            if (killMap.containsKey(player.getUniqueId())) {
+                int deadEntityKills = killMap.get(player.getUniqueId());
+                List<String> commands = getConfig().getStringList("killstreak.killprize." + deadEntityKills);
+                if (!commands.isEmpty()) {
+                    for (String command : commands)
+                        Bukkit.dispatchCommand(getServer().getConsoleSender(), command.replace("%playername%", killer.getName()));
                 }
             }
         }
